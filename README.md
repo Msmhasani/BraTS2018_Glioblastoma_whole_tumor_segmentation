@@ -18,8 +18,12 @@ The second cell (Unzipping_the_data.ipynb) is for spliting the data into two cat
 
 The third cell (Read_Data_And_Train) works as the the main program which you can train the data with different versions of unet-like models.
 #
+
+
 # P.S.
 To start your training from a checkpoint, comment the fit_generator command (line 508) and uncomment the rest of the code (after line 516).
 
+
 GoodLuck.
+
 MeiH.
