@@ -11,11 +11,11 @@ I converted the data into 2D bitmap images (Axial view) and made 4-channel image
 The accuracy result is measured by Dice coefficient which is 0.85 for my training on segmenting the whole tumor.
 #
 # How to use:
-# 1
+
 The first cell (Getting_the_data.ipynb) is for installing necessary libraries and copying the data from google drive to the google colab system.
-# 2
+
 The second cell (Unzipping_the_data.ipynb) is for spliting the data into two category (test and train).
-# 3
+
 The third cell (Read_Data_And_Train) works as the the main program which you can train the data with different versions of unet-like models.
 #
 # P.S.
