@@ -1,0 +1,89 @@
+%cd ../
+import cv2
+import glob
+import warnings
+import numpy as np
+warnings.filterwarnings("ignore")
+# import cntk as C
+# from cntk.initializer import glorot_uniform
+# from cntk.ops import relu, sigmoid, input_variable
+# from cntk.device import try_set_default_device, gpu
+# from cntk.learners import learning_rate_schedule, UnitType
+# from cntk.layers import Convolution, MaxPooling, Dense, ConvolutionTranspose2D,Dropout 
+from google.colab.patches import cv2_imshow
+
+img_rows = 240
+img_cols = 240
+img_chnls = 1
+msk_chnls = 1
+
+allfolders = glob.glob('content/mei_msks/*.bmp')
+#print(allfolders)
+the_data_dir = []
+fii = 0
+for fol in allfolders:
+    the_data_dir.append(fol)
+
+theN = len(the_data_dir)
+
+all_imgs=[]
+all_msks=[]
+#########========================================================================================
+def read_resize(path):
+    mask = cv2.imread(path,0)
+    path_1 = path
+    path_1 =path_1.replace('msks' , 'imgs')
+    
+#       im = cv2.imread(path_1, cv2.IMREAD_UNCHANGED)
+    im = cv2.imread(path_1, 0)
+#     im = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
+    
+    print(path,'  ===>  ',path_1)
+
+    return im, mask
+
+# %cd content
+
+!rm -rf content/meiimgs
+!rm -rf content/meimsks
+!rm -rf content/valimgs
+!rm -rf content/valmsks
+!rm -rf content/img_vals
+!rm -rf content/msk_vals
+
+print('theN: ===>  ',theN)
+
+import os
+os.mkdir('content/meiimgs')
+os.mkdir('content/meimsks')
+os.mkdir('content/valimgs')
+os.mkdir('content/valmsks')
+jj=0
+n = 1
+for j in range(0, theN):
+
+    im, mask = read_resize(the_data_dir[j])
+    print(jj,' ',mask[0,0])
+    if (mask[0,0] < 0 or mask[0,0] > 255 or im[0,0] < 0 or im[0,0] > 255):
+        jj = jj-1
+
+    elif j < (theN*0.9):
+        path_1 ="content/meiimgs/" + str(j) + ".bmp"
+        path_2 ="content/meimsks/" + str(j) + ".bmp"
+        # print('img: ',path_1)
+        # print('msk: ',path_2)
+        cv2.imwrite(path_1,im)
+        cv2.imwrite(path_2,mask)
+
+    else:
+        path_1 ="content/valimgs/" + str(j) + ".bmp"
+        path_2 ="content/valmsks/" + str(j) + ".bmp"
+        # print('img: ',path_1)
+        # print('msk: ',path_2)
+        cv2.imwrite(path_1,im)
+        cv2.imwrite(path_2,mask)
+        
+    jj=jj+1
+
+
+print('Done_____________________________________Done')  
