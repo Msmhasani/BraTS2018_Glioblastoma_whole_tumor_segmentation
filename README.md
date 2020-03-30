@@ -11,7 +11,7 @@ I converted the data into 2D bitmap images (Axial view) and made 4-channel image
 A sample of the dataset:
 ![Sample data](https://github.com/Msmhasani/BraTS2018_Glioblastoma_whole_tumor_segmentation/blob/master/111.JPG)
 
-The accuracy result is measured by Dice coefficient which is 0.85 for my training on segmenting the whole tumor.
+The accuracy result is measured by **Dice coefficient** which is **0.85** for my training on segmenting the whole tumor.
 #
 # How to use:
 
