@@ -8,6 +8,9 @@ The dicom data is released by MICCAI (https://www.med.upenn.edu/sbia/brats2018/d
 
 I converted the data into 2D bitmap images (Axial view) and made 4-channel images (including T1, T2, FLAIR, T1contrast) each one with a binary mask image. You can download the converted data from: https://drive.google.com/open?id=1kIOVad8-O2WVtodMNGVozmerSJl9-X7-
 
+A sample of the dataset:
+![Sample data](https://github.com/Msmhasani/BraTS2018_Glioblastoma_whole_tumor_segmentation/blob/master/111.JPG)
+
 The accuracy result is measured by Dice coefficient which is 0.85 for my training on segmenting the whole tumor.
 #
 # How to use:
